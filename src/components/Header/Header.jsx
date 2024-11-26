@@ -45,7 +45,7 @@ function Header() {
         </div>
         <div>
           <ul>
-            {navItems.forEach((item) =>
+            {navItems.map((item) =>
               item.isActive ? (
                 <li key={item.name}>
                   <button onClick={() => navigate(item.slug)}>
@@ -64,6 +64,6 @@ function Header() {
       </nav>
     </header>
   );
-}
+} 
 
 export default Header;
