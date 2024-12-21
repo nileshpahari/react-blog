@@ -3,6 +3,7 @@ import React, { forwardRef, useId } from "react";
 const Input = forwardRef(function ({
   type = "text",
   label = "",
+  placeholder="",
   classname,
   ...props
 }, ref) {
@@ -18,6 +19,7 @@ const Input = forwardRef(function ({
       <input
         type={type}
         id={id}
+        placeholder={placeholder}
         className={`${classname}`}
         ref={ref}
         {...props}
