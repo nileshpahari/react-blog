@@ -12,7 +12,7 @@ function SignUp() {
   const dispatch = useDispatch;
   const { register, handleSubmit } = useForm();
 
-  const signUp = async (data) => {
+  const signUpHandler = async (data) => {
     setError("");
     try {
       const createdUser = await authService.createUser(data);
@@ -31,13 +31,14 @@ function SignUp() {
     <div>
       <h2>Sign Up</h2>
       <div>
-        <form onSubmit={() => handleSubmit(signUp)}>
+        <form onSubmit={() => handleSubmit(signUpHandler)}>
           <Input
             label="Full Name: "
             placeholder="John Doe"
             {...register("fullName", { required: true })}
           />
           <Input
+            type="email"
             label="Email: "
             placeholder="name@example.com"
             {...register("email", { required: true })}
