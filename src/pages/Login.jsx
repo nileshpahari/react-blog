@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { login } from "../store/features/authSlice";
-import Input from "./index.js";
-import Button from "./index.js";
+import { Input, Button } from "../components/index.js";
 import authService from "../appwrite/auth.service";
 function Login() {
   const navigate = useNavigate();
@@ -27,9 +26,9 @@ function Login() {
   };
   return (
     <div>
-      <form onSubmit={() => handleSubmit(loginHandler)}>
+      <form onSubmit={handleSubmit(loginHandler)}>
         <Input
-        type="email"
+          type="email"
           label="Email"
           placeholder="name@example.com"
           {...register("email", { required: true })}

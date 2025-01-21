@@ -4,23 +4,25 @@ import { useNavigate, Link } from "react-router-dom";
 import authService from "../appwrite/auth.service.js";
 import { useForm } from "react-hook-form";
 import { login } from "../store/features/authSlice.js";
-import { Input, Button } from "./index.js";
+import { Input, Button } from "../components/index.js";
 
 function SignUp() {
-  const [error, setError] = useState("");
-  const navigate = useNavigate;
-  const dispatch = useDispatch;
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
   const signUpHandler = async (data) => {
-    setError("");
+    setError(null);
     try {
       const createdUser = await authService.createUser(data);
       if (createdUser) {
-        const user = await authService.getCurrentUser(createdUser);
+        const user = await authService.getCurrentUser();
         if (user) {
           dispatch(login(user));
-          navigate("/");
+          navigate("/", { replace: true });
+        } else {
+          setError("Failed to sign in after creating an account");
         }
       }
     } catch (error) {
@@ -31,7 +33,7 @@ function SignUp() {
     <div>
       <h2>Sign Up</h2>
       <div>
-        <form onSubmit={() => handleSubmit(signUpHandler)}>
+        <form onSubmit={handleSubmit(signUpHandler)}>
           <Input
             label="Full Name: "
             placeholder="John Doe"

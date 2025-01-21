@@ -5,10 +5,10 @@ import LogoutBtn from "../components/Header/LogoutBtn.jsx"
 import Input from "./Input.jsx";
 import SelectField from "./SelectField.jsx";
 import PostCard from "./PostCard.jsx";
-import SignUp from "./SignUp.jsx";
 import Button from "./Button.jsx"
 import RTE from "./RTE.jsx";
-
+import PostForm from "./PostForm.jsx";
+import Protected from "./Protected.jsx";
 export {
     Footer,
     Logo,
@@ -17,7 +17,8 @@ export {
     Input,
     SelectField,
     PostCard,
-    SignUp,
     Button,
-    RTE
+    RTE,
+    PostForm, 
+    Protected
 }
