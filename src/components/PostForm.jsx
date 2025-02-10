@@ -66,8 +66,8 @@ function PostForm({ post }) {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900 py-10">
-      <div className="w-full max-w-4xl bg-gray-800 p-10 rounded-lg shadow-lg">
+    <div className="flex justify-center items-center min-h-screen py-10">
+      <div className="w-full max-w-6xl bg-gray-800 p-10 rounded-lg shadow-lg">
         <h2 className="text-3xl font-semibold text-white text-center mb-8">
           {post ? "Edit Post" : "Create Post"}
         </h2>
@@ -84,24 +84,24 @@ function PostForm({ post }) {
           )}
 
           <div className="space-y-6">
-            <Input 
-              label="Title" 
-              placeholder="Title" 
-              labelClasses="block mb-2 text-sm font-medium text-gray-300" 
-              inputClasses="w-full p-2.5 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-              {...register("title", { required: !post })} 
+            <Input
+              label="Title"
+              placeholder="Title"
+              labelClasses="block mb-2 text-sm font-medium text-gray-300"
+              inputClasses="w-full p-2.5 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              {...register("title", { required: !post })}
             />
-            <Input 
-              label="Slug" 
-              placeholder="Slug" 
-              labelClasses="block mb-2 text-sm font-medium text-gray-300" 
-              inputClasses="w-full p-2.5 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-              {...register("slug", { required: !post })} 
+            <Input
+              label="Slug"
+              placeholder="Slug"
+              labelClasses="block mb-2 text-sm font-medium text-gray-300"
+              inputClasses="w-full p-2.5 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              {...register("slug", { required: !post })}
               onInput={(e) => {
                 setValue("slug", generateSlug(e.currentTarget.value), {
                   shouldValidate: true,
                 });
-              }} 
+              }}
             />
             <RTE
               label="Content"
@@ -112,27 +112,27 @@ function PostForm({ post }) {
           </div>
 
           <div className="space-y-6">
-            <Input 
-              type="file" 
-              label="Featured Image" 
-              placeholder="Upload an Image" 
-              labelClasses="block mb-2 text-sm font-medium text-gray-300" 
-              inputClasses="w-full p-2.5 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-blue-500 focus:border-blue-500" 
-              accept="image/png, image/jpg, image/jpeg" 
-              {...register("image")} 
+            <Input
+              type="file"
+              label="Featured Image"
+              placeholder="Upload an Image"
+              labelClasses="block mb-2 text-sm font-medium text-gray-300"
+              inputClasses="w-full p-2.5 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-blue-500 focus:border-blue-500"
+              accept="image/png, image/jpg, image/jpeg"
+              {...register("image")}
             />
             <div>
               <SelectField
-              label="Status"
-              labelClasses="block mb-2 text-sm font-medium text-gray-300"
-
+                label="Status"
+                labelClasses="block mb-2 text-sm font-medium text-gray-300"
+                selectFieldClasses="w-full p-2.5 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-blue-500 focus:border-blue-500"
                 options={["active", "inactive"]}
                 {...register("status", { required: true })}
               />
             </div>
           </div>
-          
-          <Button classname="w-full">{post ? "Update" : "Create"}</Button>
+
+          <Button classname="w-2/12 py-3">{post ? "Update" : "Create"}</Button>
         </form>
       </div>
     </div>
