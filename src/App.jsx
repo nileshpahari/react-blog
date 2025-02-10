@@ -39,7 +39,7 @@ function App() {
       </div>
     </>
   ) : (
-    <div className=" text-3xl font-bold">Loading...</div>
+    <div className=" text-4xl font-bold h-screen flex justify-center items-center">Loading...</div>
   );
 }
 

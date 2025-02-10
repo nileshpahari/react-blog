@@ -1,11 +1,11 @@
 import React, { forwardRef, useId } from "react";
 
-function SelectField({ options = [], label, classname = "", ...props }, ref) {
+function SelectField({ options = [], label="", selectFieldClasses = "", labelClasses = "", ...props }, ref) {
   const id = useId();
   return (
     <div>
-      {label && <label htmlFor={id}></label>}
-      <select id={id} ref={ref} className={`${classname}`} {...props}>
+      {label && <label htmlFor={id} className={labelClasses} >{label}</label>}
+      <select id={id} ref={ref} className={`${selectFieldClasses}`} {...props}>
         {options?.map((option) => (
           <option key={option} value={option}>
             {option}

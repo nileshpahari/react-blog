@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import dbService from "../appwrite/db.service.js";
 import storageService from "../appwrite/storage.service.js";
 import { Button } from "../components/index.js";
+import { useSelector } from "react-redux";
 function Post() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
