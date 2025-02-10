@@ -9,6 +9,8 @@ import Button from "./Button.jsx"
 import RTE from "./RTE.jsx";
 import PostForm from "./PostForm.jsx";
 import Protected from "./Protected.jsx";
+import Login from "./Login.jsx";
+import Layout from "./Layout.jsx";
 export {
     Footer,
     Logo,
@@ -20,5 +22,7 @@ export {
     Button,
     RTE,
     PostForm, 
-    Protected
+    Protected,
+    Login,
+    Layout
 }

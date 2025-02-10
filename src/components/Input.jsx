@@ -4,7 +4,8 @@ const Input = forwardRef(function ({
   type = "text",
   label = "",
   placeholder="",
-  classname,
+  labelClasses,
+  inputClasses,
   ...props
 }, ref) {
   const id = useId();
@@ -12,7 +13,7 @@ const Input = forwardRef(function ({
   return (
     <div>
       {label && (
-        <label htmlFor={id} className="">
+        <label htmlFor={id} className={`${labelClasses}  focus:ring focus:ring-blue-500 focus:border-blue-500 transition`}>
           {label}
         </label>
       )}
@@ -20,7 +21,7 @@ const Input = forwardRef(function ({
         type={type}
         id={id}
         placeholder={placeholder}
-        className={`${classname}`}
+        className={`${inputClasses}`}
         ref={ref}
         {...props}
       />
