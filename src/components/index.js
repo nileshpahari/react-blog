@@ -11,6 +11,7 @@ import PostForm from "./PostForm.jsx";
 import Protected from "./Protected.jsx";
 import Login from "./Login.jsx";
 import Layout from "./Layout.jsx";
+import SignUp from "./SignUp.jsx";
 export {
     Footer,
     Logo,
@@ -21,8 +22,9 @@ export {
     PostCard,
     Button,
     RTE,
-    PostForm, 
+    PostForm,
     Protected,
     Login,
-    Layout
+    Layout, 
+    SignUp
 }

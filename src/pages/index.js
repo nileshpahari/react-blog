@@ -5,5 +5,4 @@ import AllPosts from "./AllPosts.jsx";
 import AddPost from "./AddPost.jsx";
 import Post from "./Post.jsx";
 import EditPost from "./EditPost.jsx";
-
 export { Home, Login, SignUp, AllPosts, AddPost, Post, EditPost };
