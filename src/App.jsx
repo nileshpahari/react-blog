@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux";
 import { login, logout } from "./store/features/authSlice.js";
 import authService from "./appwrite/auth.service.js";
 import { Outlet } from "react-router-dom";
-import {Header, Footer} from "./components/index.js"
-import {Layout} from "./components/index.js";
+import { Header, Footer } from "./components/index.js";
+import { Layout } from "./components/index.js";
+import config from "./config.js";
 
 function App() {
   const [loading, setLoading] = useState(true);
 
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   useEffect(() => {
     authService
@@ -27,15 +28,15 @@ function App() {
 
   return !loading ? (
     <>
-    <div>
-      <Header/>
-      <main>
-        <Layout>
-        <Outlet/>
-        </Layout>
-      </main>
-      <Footer/>
-    </div>
+      <div>
+        <Header />
+        <main>
+          <Layout>
+            <Outlet />
+          </Layout>
+        </main>
+        <Footer />
+      </div>
     </>
   ) : (
     <div className=" text-3xl font-bold">Loading...</div>

@@ -39,7 +39,7 @@ function Header() {
               )}
               {authStatus && (
                 <li>
-                  <LogoutBtn />
+                  <LogoutBtn classname="py-2 px-4 text-gray-800 dark:text-gray-200 font-medium hover:text-blue-700 dark:hover:text-blue-400 transition duration-300"/>
                 </li>
               )}
             </ul>
