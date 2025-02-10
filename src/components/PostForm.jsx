@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import dbService from "../appwrite/db.service";
@@ -68,7 +68,7 @@ function PostForm({ post }) {
   return (
     <div>
       <form onSubmit={handleSubmit(submit)}>
-        {post.featuredImage && (
+        {post?.featuredImage && (
           <div>
             <img
               src={storageService.previewFile(post.featuredImage)}

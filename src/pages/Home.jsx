@@ -2,7 +2,7 @@ import React from 'react'
 
 function Home() {
   return (
-    <div>Login in to see contents</div>
+    <div className='test-white text-2xl h-screen flex justify-center items-center '>No Content Available</div>
   )
 }
 
