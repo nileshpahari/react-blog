@@ -32,7 +32,7 @@ function PostForm({ post }) {
   useEffect(() => {
     const subscription = watch((value, { name }) => {
       if (name === "title") {
-        setValue("slug", generateSlug(value), { shouldValidate: true });
+        setValue("slug", generateSlug(value.title), { shouldValidate: true });
       }
     });
     return () => subscription.unsubscribe();
@@ -67,7 +67,7 @@ function PostForm({ post }) {
 
   return (
     <div className="flex justify-center items-center min-h-screen py-10">
-      <div className="w-full max-w-6xl bg-gray-800 p-10 rounded-lg shadow-lg">
+      <div className="w-full max-w-6xl bg-gray-700 p-10 rounded-lg shadow-lg">
         <h2 className="text-3xl font-semibold text-white text-center mb-8">
           {post ? "Edit Post" : "Create Post"}
         </h2>
@@ -97,11 +97,11 @@ function PostForm({ post }) {
               labelClasses="block mb-2 text-sm font-medium text-gray-300"
               inputClasses="w-full p-2.5 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-blue-500 focus:border-blue-500"
               {...register("slug", { required: !post })}
-              onInput={(e) => {
-                setValue("slug", generateSlug(e.currentTarget.value), {
-                  shouldValidate: true,
-                });
-              }}
+              // onInput={(e) => {
+              //   setValue("slug", generateSlug(e.currentTarget.value), {
+              //     shouldValidate: true,
+              //   });
+              // }}
             />
             <RTE
               label="Content"

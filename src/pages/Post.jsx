@@ -4,6 +4,7 @@ import dbService from "../appwrite/db.service.js";
 import storageService from "../appwrite/storage.service.js";
 import { Button } from "../components/index.js";
 import { useSelector } from "react-redux";
+import parse from "html-react-parser";
 function Post() {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
@@ -24,6 +25,7 @@ function Post() {
       })
       .catch((error) => console.log(error))
       .finally(setLoading(false));
+    console.log(post);
   }, [slug, navigate]);
 
   const deletePost = () => {
@@ -62,7 +64,7 @@ function Post() {
       <div>
         <h1>{post.title}</h1>
       </div>
-      <div>{pasrse(post.content)}</div>
+      <div>{parse(post.content)}</div>
     </div>
   );
 }
