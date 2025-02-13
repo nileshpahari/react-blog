@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import dbService from "../appwrite/db.service";
 import { PostForm } from "../components/index.js";
