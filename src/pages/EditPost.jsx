@@ -10,6 +10,7 @@ function EditPost() {
     dbService.getPost(slug).then((post) => {
       if (post) {
         setPost(post);
+        console.log(post)
       } else {
         navigate("/");
       }
@@ -17,7 +18,7 @@ function EditPost() {
   }, [slug, navigate]);
   return !post? null :(
     <div>
-      <PostForm {...post} />
+      <PostForm post={post} />
     </div>
   );
 }

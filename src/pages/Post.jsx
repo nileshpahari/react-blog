@@ -52,18 +52,20 @@ function Post() {
           </div>
         )}
         <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-        <div className="prose prose-invert max-w-none mb-6">{parse(post.content)}</div>
+        <div className="prose prose-invert max-w-none mb-6">
+          {parse(post.content)}
+        </div>
 
         {isAuthor && (
-          <div className="flex  space-x-4 mt-60">
+          <div className="flex  space-x-4 mt-32">
             <Button
-              classname=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg w-1/4"
+              classname=" bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg "
               onClick={() => navigate(`/edit-post/${post.$id}`)}
             >
               Edit
             </Button>
             <Button
-              classname=" bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg w-1/4"
+              classname=" bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded-lg "
               onClick={deletePost}
             >
               Delete
@@ -91,7 +93,6 @@ export default Post;
 //   const [loading, setLoading] = useState(true);
 //   const authStatus = useSelector((state) => state.auth.userData);
 //   const isAuthor = post && authStatus ? post.userId === authStatus.$id : false;
-
 
 //   useEffect(() => {
 //     dbService
