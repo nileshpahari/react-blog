@@ -20,7 +20,7 @@ function Header() {
       <nav className="bg-white border-gray-200 dark:bg-gray-900 py-3 px-4 md:px-8">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto">
           <Link to="/">
-            <Logo className="text-white text-2xl font-bold" width="120px" height="auto" />
+            <Logo className="text-gray-300 text-2xl font-bold" width="120px" height="auto" />
           </Link>
           <div className="hidden md:flex md:items-center md:space-x-6">
             <ul className="flex space-x-6">
