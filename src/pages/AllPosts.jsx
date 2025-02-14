@@ -4,6 +4,7 @@ import dbService from "../appwrite/db.service.js";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     dbService
@@ -13,9 +14,16 @@ function AllPosts() {
           setPosts(posts.documents);
         }
       })
-      .catch((error) => console.error("Error fetching posts:", error));
+      .catch((error) => console.error("Error fetching posts:", error))
+      .finally(() => setLoading(false));
   }, []);
-
+  if (loading) {
+    return (
+      <div className=" text-3xl font-bold h-screen flex justify-center items-center text-white">
+        Loading...
+      </div>
+    );
+  }
   if (posts.length === 0) {
     return (
       <div className="h-screen flex flex-col justify-center items-center text-center bg-gray-900 text-white">
@@ -45,7 +53,6 @@ function AllPosts() {
     </div>
   );
 }
-
 export default AllPosts;
 
 // import React, { useEffect, useState } from "react";
