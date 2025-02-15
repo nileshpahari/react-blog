@@ -47,7 +47,7 @@ function Post() {
             <img
               src={storageService.previewFile(post.featuredImage)}
               alt="Post featured image"
-              className="w-full h-64 object-cover rounded-lg"
+              className="w-full h-80 object-cover rounded-lg"
             />
           </div>
         )}
