@@ -40,8 +40,8 @@ function Post() {
       <h1 className="text-3xl text-white">Loading post...</h1>
     </div>
   ) : (
-    <div className="min-h-screen flex justify-center items-center py-10 px-4">
-      <div className="w-full max-w-4xl bg-gray-800 p-8 rounded-lg shadow-lg text-white">
+    <div className="min-h-screen flex justify-center items-center py-10 px-4 ">
+      <div className="w-11/12  bg-gray-800 p-8 rounded-lg shadow-lg text-white ">
         {post.featuredImage && (
           <div className="mb-6">
             <img
