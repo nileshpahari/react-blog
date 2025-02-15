@@ -40,11 +40,10 @@ export class DbService {
                     content,
                     featuredImage,
                     status,
-                    userId
                 }
             )
         } catch (error) {
-            throw new Error("failed to delete the post");
+            throw new Error("failed to update the post");
         }
     }
 

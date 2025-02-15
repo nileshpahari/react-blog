@@ -30,6 +30,7 @@ function PostForm({ post }) {
   }, []);
 
   useEffect(() => {
+    console.log(post?.$id);
     const subscription = watch((value, { name }) => {
       if (name === "title") {
         setValue("slug", generateSlug(value.title), { shouldValidate: true });
@@ -39,18 +40,19 @@ function PostForm({ post }) {
   }, [watch, generateSlug, setValue]);
 
   const submit = async (data) => {
-    const featuredImage = data.image?.[0]
-      ? await storageService.uploadFile(data.image[0])
-      : null;
+    let featuredImage = null;
+    if (data.image?.[0]) {
+      featuredImage = await storageService.uploadFile(data.image[0]);
+    }
     if (post) {
-      if (featuredImage) {
-        await storageService.deleteFile(post.featuredImage);
-      }
       const dbPost = await dbService.updatePost(post.$id, {
         ...data,
-        featuredImage: featuredImage ? featuredImage.$id : null,
+        featuredImage: featuredImage ? featuredImage.$id : post.featuredImage,
       });
       if (dbPost) {
+        if (featuredImage && post.featuredImage) {
+          await storageService.deleteFile(post.featuredImage);
+        }
         navigate(`/post/${dbPost.$id}`);
       }
     } else {
@@ -140,7 +142,6 @@ function PostForm({ post }) {
 }
 
 export default PostForm;
-
 
 // import { useNavigate } from "react-router-dom";
 // import { useForm } from "react-hook-form";
