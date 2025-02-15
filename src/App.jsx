@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "./store/features/authSlice.js";
 import authService from "./appwrite/auth.service.js";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Header, Footer } from "./components/index.js";
 import { Layout } from "./components/index.js";
-import config from "./config.js";
 
 function App() {
+  console.log(
+    "If you encounter an error, please file an issue on the repo: https://github.com/nileshpahari/react-blog "
+  );
   const [loading, setLoading] = useState(true);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,7 +25,7 @@ function App() {
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
-  }, []);
+  }, [dispatch]);
 
   return !loading ? (
     <>
@@ -39,7 +40,9 @@ function App() {
       </div>
     </>
   ) : (
-    <div className=" text-4xl font-bold h-screen flex justify-center items-center">Loading...</div>
+    <div className=" text-4xl font-bold h-screen flex justify-center items-center">
+      Loading...
+    </div>
   );
 }
 
