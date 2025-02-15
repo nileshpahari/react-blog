@@ -30,7 +30,6 @@ function PostForm({ post }) {
   }, []);
 
   useEffect(() => {
-    console.log(post?.$id);
     const subscription = watch((value, { name }) => {
       if (name === "title") {
         setValue("slug", generateSlug(value.title), { shouldValidate: true });
