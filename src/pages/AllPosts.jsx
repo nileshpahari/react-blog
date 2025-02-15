@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { PostCard } from "../components/index.js";
 import dbService from "../appwrite/db.service.js";
+import { Query } from "appwrite";
+import { useSelector } from "react-redux";
 
 function AllPosts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const userId = useSelector((state) => state.auth.userData.$id);
   useEffect(() => {
     dbService
-      .getPosts([])
+      .getPosts([Query.equal("userId", userId)])
       .then((posts) => {
         if (posts) {
           setPosts(posts.documents);
@@ -16,7 +18,7 @@ function AllPosts() {
       })
       .catch((error) => console.error("Error fetching posts:", error))
       .finally(() => setLoading(false));
-  }, []);
+  }, [userId]);
   if (loading) {
     return (
       <div className=" text-3xl font-bold h-screen flex justify-center items-center text-white">
@@ -38,7 +40,7 @@ function AllPosts() {
   return (
     <div className="max-w-7xl mx-auto p-6 bg-gray-900 min-h-screen text-white">
       <h1 className="text-4xl font-bold text-white mb-8 text-center border-b-2 border-gray-700 pb-4">
-        Posts
+        Your Posts
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map((post) => (

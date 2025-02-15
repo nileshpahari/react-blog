@@ -9,7 +9,7 @@ function Header() {
   const authStatus = useSelector((state) => state.auth.status);
   const navItems = [
     { name: "Home", slug: "/", isActive: true },
-    { name: "All Posts", slug: "/all-posts", isActive: authStatus },
+    { name: "Your Posts", slug: "/all-posts", isActive: authStatus },
     { name: "Add Post", slug: "/add-post", isActive: authStatus },
     { name: "Login", slug: "/login", isActive: !authStatus },
     { name: "Signup", slug: "/signup", isActive: !authStatus },
