@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PostCard } from "../components/index.js";
+import { Loader, PostCard } from "../components/index.js";
 import dbService from "../appwrite/db.service.js";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
@@ -22,9 +22,7 @@ function Home() {
   }, []);
   if (loading) {
     return (
-      <div className=" text-3xl font-bold h-screen flex justify-center items-center text-white">
-        Loading...
-      </div>
+    <Loader/> 
     );
   }
   if (posts.length === 0) {

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { PostCard } from "../components/index.js";
+import { Loader, PostCard } from "../components/index.js";
 import dbService from "../appwrite/db.service.js";
 import { Query } from "appwrite";
 import { useSelector } from "react-redux";
-
 function AllPosts() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,11 +19,7 @@ function AllPosts() {
       .finally(() => setLoading(false));
   }, [userId]);
   if (loading) {
-    return (
-      <div className=" text-3xl font-bold h-screen flex justify-center items-center text-white">
-        Loading...
-      </div>
-    );
+    return <Loader />;
   }
   if (posts.length === 0) {
     return (

@@ -12,6 +12,7 @@ import Protected from "./Protected.jsx";
 import Login from "./Login.jsx";
 import Layout from "./Layout.jsx";
 import SignUp from "./SignUp.jsx";
+import Loader from "./Loader.jsx";
 export {
     Footer,
     Logo,
@@ -26,5 +27,6 @@ export {
     Protected,
     Login,
     Layout, 
-    SignUp
+    SignUp,
+    Loader
 }

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login, logout } from "./store/features/authSlice.js";
 import authService from "./appwrite/auth.service.js";
 import { Outlet, useNavigate } from "react-router-dom";
 import { Header, Footer } from "./components/index.js";
 import { Layout } from "./components/index.js";
+import { Loader } from "./components/index.js";
 
 function App() {
   console.log(
@@ -40,9 +41,8 @@ function App() {
       </div>
     </>
   ) : (
-    <div className=" text-4xl font-bold h-screen flex justify-center items-center">
-      Loading...
-    </div>
+      <Loader />
+   
   );
 }
 

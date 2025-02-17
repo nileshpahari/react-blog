@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import dbService from "../appwrite/db.service.js";
 import storageService from "../appwrite/storage.service.js";
-import { Button } from "../components/index.js";
+import { Button, Loader } from "../components/index.js";
 import { useSelector } from "react-redux";
 import parse from "html-react-parser";
 
@@ -36,9 +36,7 @@ function Post() {
   };
 
   return loading ? (
-    <div className="min-h-screen flex justify-center items-center">
-      <h1 className="text-3xl text-white">Loading post...</h1>
-    </div>
+    <Loader />
   ) : (
     <div className="min-h-screen flex justify-center items-center py-10 px-4 ">
       <div className="w-11/12  bg-gray-800 p-8 rounded-lg shadow-lg text-white ">
