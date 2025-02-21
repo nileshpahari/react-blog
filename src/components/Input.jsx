@@ -1,19 +1,25 @@
 import React, { forwardRef, useId } from "react";
 
-const Input = forwardRef(function ({
-  type = "text",
-  label = "",
-  placeholder="",
-  labelClasses,
-  inputClasses,
-  ...props
-}, ref) {
+const Input = forwardRef(function (
+  {
+    type = "text",
+    label = "",
+    placeholder = "",
+    labelClasses,
+    inputClasses,
+    ...props
+  },
+  ref
+) {
   const id = useId();
 
   return (
     <div>
       {label && (
-        <label htmlFor={id} className={`${labelClasses}  focus:ring focus:ring-blue-500 focus:border-blue-500 transition`}>
+        <label
+          htmlFor={id}
+          className={` focus:ring focus:ring-blue-500 focus:border-blue-500 transition ${labelClasses} `}
+        >
           {label}
         </label>
       )}
