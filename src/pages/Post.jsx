@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import dbService from "../appwrite/db.service.js";
 import storageService from "../appwrite/storage.service.js";
-import { Button, Loader } from "../components/index.js";
+import { Button, Loader, PostFailure } from "../components/index.js";
 import { useSelector } from "react-redux";
 import parse from "html-react-parser";
 
@@ -46,13 +46,7 @@ function Post() {
     return <Loader />;
   } else {
     if (!post) {
-      return (
-        <div className="min-h-screen flex justify-center items-center">
-          <h1 className="text-3xl text-white">
-            Failed to find the post with slug: {slug}
-          </h1>
-        </div>
-      );
+      return <PostFailure slug={slug} />;
     } else {
       return (
         <div className="min-h-screen flex justify-center items-center py-10 px-4 ">

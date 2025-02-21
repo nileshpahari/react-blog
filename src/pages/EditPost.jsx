@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import dbService from "../appwrite/db.service";
-import { PostForm } from "../components/index.js";
+import { PostFailure, PostForm } from "../components/index.js";
 function EditPost() {
   const [post, setPost] = useState(null);
   const navigate = useNavigate();
@@ -15,7 +15,9 @@ function EditPost() {
       }
     });
   }, [slug, navigate]);
-  return !post? null :(
+  return !post ? (
+    <PostFailure slug={slug} />
+  ) : (
     <div>
       <PostForm post={post} />
     </div>

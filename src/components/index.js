@@ -14,6 +14,7 @@ import Layout from "./Layout.jsx";
 import SignUp from "./SignUp.jsx";
 import Loader from "./Loader.jsx";
 import Welcome from "./Welcome.jsx";
+import PostFailure from "./PostFailure.jsx";
 export {
     Footer,
     Logo,
@@ -30,5 +31,6 @@ export {
     Layout, 
     SignUp,
     Loader,
-    Welcome
+    Welcome,
+    PostFailure
 }
