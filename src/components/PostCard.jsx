@@ -24,4 +24,3 @@ function PostCard({ $id, featuredImage, title, classname }) {
 }
 
 export default PostCard;
-

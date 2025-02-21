@@ -29,7 +29,6 @@ function Login() {
       <div className="w-full max-w-md bg-gray-800 p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold text-white text-center mb-6">Login</h2>
 
-        {/* Form */}
         <form onSubmit={handleSubmit(loginHandler)} className="space-y-5">
           <Input
             type="email"
@@ -48,14 +47,11 @@ function Login() {
             {...register("password", { required: true })}
           />
 
-          {/* Error Message */}
           {error && <div className="text-red-500 text-sm">{error}</div>}
 
-          {/* Submit Button */}
           <Button classname="w-full">Login</Button>
         </form>
 
-        {/* Sign Up Link */}
         <div className="mt-4 text-gray-400 text-sm text-center">
           No account?&nbsp;
           <Link to="/signup" className="text-blue-500 hover:underline">

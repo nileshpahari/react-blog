@@ -20,19 +20,32 @@ function Post() {
       .then((post) => {
         if (post) {
           setPost(post);
+        } else {
+          return (
+            <div className="min-h-screen flex justify-center items-center">
+              <h1 className="text-3xl text-white">
+                Failed to find the post with slug: {slug}
+              </h1>
+            </div>
+          );
         }
       })
       .catch((error) => console.log(error))
       .finally(() => setLoading(false));
-  }, [slug]);
+  }, [slug, navigate]);
 
   const deletePost = () => {
-    dbService.deletePost(post.$id).then((status) => {
-      if (status) {
-        storageService.deleteFile(post.featuredImage);
-        navigate("/");
-      }
-    });
+    try {
+      dbService.deletePost(post.$id).then((status) => {
+        if (status) {
+          storageService.deleteFile(post.featuredImage);
+          navigate("/");
+        }
+      });
+    } catch (error) {
+      alert("Failed to delete the post");
+      console.log("Error while deleting the post: ", error);
+    }
   };
 
   return loading ? (
@@ -76,86 +89,3 @@ function Post() {
 }
 
 export default Post;
-
-// import React, { useEffect, useState } from "react";
-// import { useNavigate, useParams } from "react-router-dom";
-// import dbService from "../appwrite/db.service.js";
-// import storageService from "../appwrite/storage.service.js";
-// import { Button } from "../components/index.js";
-// import { useSelector } from "react-redux";
-// import parse from "html-react-parser";
-// function Post() {
-//   const { slug } = useParams();
-//   const [post, setPost] = useState(null);
-//   const navigate = useNavigate();
-//   const [loading, setLoading] = useState(true);
-//   const authStatus = useSelector((state) => state.auth.userData);
-//   const isAuthor = post && authStatus ? post.userId === authStatus.$id : false;
-
-//   useEffect(() => {
-//     dbService
-//       .getPost(slug)
-//       .then((post) => {
-//         if (post) {
-//           setPost(post);
-//         } else {
-//           return (
-//             <div className="min-h-screen flex justify-center items-center">
-//               <h1 className="text-3xl text-white">
-//                 Failed to find the post with slug: {slug}
-//               </h1>
-//             </div>
-//           );
-//         }
-//       })
-//       .catch((error) => console.log(error))
-//       .finally(() => setLoading(false));
-//     console.log(post);
-//   }, [slug, navigate]);
-
-//   const deletePost = () => {
-//     dbService.deletePost(post.$id).then((status) => {
-//       if (status) {
-//         storageService.deleteFile(post.featuredImage);
-//         navigate("/");
-//       }
-//     });
-//   };
-
-//   return loading ? (
-//     <div className="min-h-screen flex justify-center items-center">
-//       <h1 className="text-3xl text-white">
-//        Loading post...
-//       </h1>
-//     </div>
-//   ) : (
-//     <div>
-//       <div>
-//         <img
-//           src={storageService.previewFile(post.featuredImage)}
-//           alt="Post featured image"
-//         />
-//       </div>
-//       {isAuthor && (
-//         <div>
-//           <div>
-//             <Button
-//               onClick={() => {
-//                 navigate(`/edit-post/${post.$id}`);
-//               }}
-//             >
-//               Edit
-//             </Button>
-//             <Button onClick={deletePost}>Delete</Button>
-//           </div>
-//         </div>
-//       )}
-//       <div>
-//         <h1>{post.title}</h1>
-//       </div>
-//       <div>{parse(post.content)}</div>
-//     </div>
-//   );
-// }
-
-// export default Post;
